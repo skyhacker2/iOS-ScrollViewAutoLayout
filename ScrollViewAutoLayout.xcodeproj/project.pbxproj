@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A58F9A211B55401100713593 /* ContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A58F9A201B55401100713593 /* ContentView.xib */; };
 		A58FAB231B5518A5007793C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A58FAB221B5518A5007793C2 /* main.m */; };
 		A58FAB261B5518A5007793C2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A58FAB251B5518A5007793C2 /* AppDelegate.m */; };
 		A58FAB291B5518A5007793C2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58FAB281B5518A5007793C2 /* ViewController.m */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A58F9A201B55401100713593 /* ContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentView.xib; sourceTree = "<group>"; };
 		A58FAB1D1B5518A5007793C2 /* ScrollViewAutoLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollViewAutoLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A58FAB211B5518A5007793C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A58FAB221B5518A5007793C2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				A58FAB2D1B5518A5007793C2 /* Images.xcassets */,
 				A58FAB2F1B5518A5007793C2 /* LaunchScreen.xib */,
 				A58FAB201B5518A5007793C2 /* Supporting Files */,
+				A58F9A201B55401100713593 /* ContentView.xib */,
 			);
 			path = ScrollViewAutoLayout;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			files = (
 				A58FAB2C1B5518A5007793C2 /* Main.storyboard in Resources */,
 				A58FAB311B5518A5007793C2 /* LaunchScreen.xib in Resources */,
+				A58F9A211B55401100713593 /* ContentView.xib in Resources */,
 				A58FAB2E1B5518A5007793C2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +422,7 @@
 				A58FAB421B5518A5007793C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A58FAB431B5518A5007793C2 /* Build configuration list for PBXNativeTarget "ScrollViewAutoLayoutTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +431,7 @@
 				A58FAB451B5518A5007793C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
