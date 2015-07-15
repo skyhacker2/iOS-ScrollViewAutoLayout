@@ -1,40 +1,34 @@
-//
-//  ViewController.m
-//  ScrollViewAutoLayout
-//
-//  Created by Eleven Chen on 15/7/14.
-//  Copyright (c) 2015年 Eleven. All rights reserved.
-//
+#ScrollViewAutoLayout
 
-#import "ViewController.h"
+>UIScrollView And Autolayout
 
-@interface ViewController ()
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) UIView *contentView;
+Screenshots
+
+在4s和5s上面，会出现滚动条，因为contentview的高度比屏幕高度小
+
+![image](./images/4s.jpg)
+![image](./images/5s.jpg)
+
+在6上面不会出现滚动条。
+
+![image](./images/6.png)
 
 
-@end
+##实现
 
-@implementation ViewController
+contentView是用xib做的。
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    NSArray* nibs = [[NSBundle mainBundle] loadNibNamed:@"ContentView" owner:self options:nil];
+在viewDidLoaded里面加载进来，然后加到scrollview里面。
+
+```
+NSArray* nibs = [[NSBundle mainBundle] loadNibNamed:@"ContentView" owner:self options:nil];
     self.contentView = [nibs objectAtIndex:0];
     [self.scrollView addSubview:self.contentView];
-    NSLog(@"main height %f", self.view.bounds.size.height);
-    NSLog(@"height %f", self.contentView.frame.size.height);
+```
 
-}
+然后在`updateViewConstraints`添加contentview到scrollview上下左右的约束
 
-
-- (void) updateViewConstraints
-{
-
-    NSLog(@"scrollview height %f", self.scrollView.frame.size.height);
-    NSLog(@"height %f", self.contentView.frame.size.height);
+```
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView
                                                           attribute:NSLayoutAttributeTop
                                                           relatedBy:NSLayoutRelationEqual
@@ -63,8 +57,12 @@
                                                           attribute:NSLayoutAttributeLeft
                                                          multiplier:1.0f
                                                            constant:0]];
-    
-    self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+```
+
+这时候，contentview的width和height都是不正确。要令contentview的width是最上层父view的width，height是contentview设计时的height。
+
+```
+self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     NSNumber *height = [NSNumber numberWithFloat:self.contentView.bounds.size.height];
     
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[self(==height)]"
@@ -76,18 +74,8 @@
                                                                       options:0
                                                                       metrics:@{@"width": [NSNumber numberWithFloat:self.view.bounds.size.width]}
                                                                         views:views]];
-    
-    [super updateViewConstraints];
-}
+```
 
-- (IBAction)action:(UIButton *)sender
-{
-    NSLog(@"Action");
-}
+##Reference
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-@end
+[http://spin.atomicobject.com/2014/03/05/uiscrollview-autolayout-ios/](http://spin.atomicobject.com/2014/03/05/uiscrollview-autolayout-ios/)
